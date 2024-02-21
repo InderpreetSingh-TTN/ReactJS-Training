@@ -21,8 +21,6 @@ function Products(){
         <h2>Products</h2>
         <h5> Cart Items {cartItems.length} </h5>
         <Table items={items} setCartItems={setCartItems} cartItems ={cartItems} />
-        <button onClick={()=>setItems([...items , {demo:"demo123"}])}>BUTTON</button>
-
         </div>
     </>
     );

@@ -38,7 +38,7 @@ function Table(props) {
                             <td class="col-2">{e.title}</td>
                             <td class="col-3">{e.description}</td>
                             <td class="col-2">{e.price}</td>
-                            <td class="col-2"><button type="button" class="btn btn-warning" onClick={()=>{handleAddToCart(e.id)}}>Add To Cart</button></td>
+                            <td class="col-2"><button type="button" class="btn btn-warning" onClick={(obj)=>{handleAddToCart(e.id) ; obj.currentTarget.innerText = "Added"}}>Add To Cart</button></td>
                             
                         </tr>
                     );

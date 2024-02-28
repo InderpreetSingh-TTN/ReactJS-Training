@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Products from "./Products";
+import NavBar from "./NavBar";
 
 
 function App() {
@@ -7,7 +8,8 @@ function App() {
   
   return (
     <>
-    <Products/>
+    <NavBar/>
+    {/* <Products/> */}
     </>
   );
 }

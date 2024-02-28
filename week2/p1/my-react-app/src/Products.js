@@ -1,9 +1,8 @@
 import { useState , useEffect} from "react";
 import Table from "./Table";
-function Products(){
+function Products(props){
    
     const[items ,setItems] = useState([]) ;
-    const[cartItems,setCartItems] = useState([]) ;
 
     useEffect(()=>{
         fetch("https://fakestoreapi.com/products").then(function(res){
@@ -19,8 +18,8 @@ function Products(){
    return(<>
         <div>
         <h2>Products</h2>
-        <h5> Cart Items {cartItems.length} </h5>
-        <Table items={items} setCartItems={setCartItems} cartItems ={cartItems} />
+        <h5> Cart Items {props.cartItems.length} </h5>
+        <Table items={items} setCartItems={props.setCartItems} cartItems={props.cartItems} />
         </div>
     </>
     );

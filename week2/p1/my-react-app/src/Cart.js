@@ -1,7 +1,12 @@
-
+import { useDispatch, useSelector } from "react-redux";
 function Cart(props){
 
+    const cartItems = useSelector(state => state.cartItems)
     // const [tableItems, setItems] = useState([]);
+
+    if(cartItems.length == 0){
+        return(<h5 style={{textAlign : 'center'}}>Cart Empty</h5>);
+    }
 
     return(<>
         <table class="table">
@@ -16,7 +21,7 @@ function Cart(props){
                 </tr>
             </thead>
             <tbody>{
-                props.cartItems.map((e) => {
+                cartItems.map((e) => {
                     return (
                         <tr>
                             <th class="col-1" scope="row">{e.id}</th>

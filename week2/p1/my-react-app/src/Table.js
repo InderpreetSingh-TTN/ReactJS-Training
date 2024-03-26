@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "./ProductsListReducer/productlistslice";
 
 function Table(props) {
 
     const [tableItems, setItems] = useState([]);
+    const cartItems = useSelector(state => state.cartItems)
+    const dispatch = useDispatch();
 
     useEffect(() => {
         setItems(props.items)
@@ -10,11 +14,12 @@ function Table(props) {
     },[props.items]);
 
     function handleAddToCart(id){
-        let oldCartItems = [...props.cartItems]
+        let oldCartItems = [...cartItems]
         if(oldCartItems.includes(id)){
             alert("This Item already Added")
         }else{
-        props.setCartItems([...oldCartItems , id]);
+            dispatch(addToCart([...oldCartItems , id]))
+        // props.setCartItems([...oldCartItems , id]);
         }
     }
     return (<>
@@ -38,7 +43,7 @@ function Table(props) {
                             <td class="col-2">{e.title}</td>
                             <td class="col-3">{e.description}</td>
                             <td class="col-2">{e.price}</td>
-                            <td class="col-2"><button type="button" class="btn btn-warning" onClick={(obj)=>{handleAddToCart(e) ; obj.currentTarget.innerText = "Added"}}>Add To Cart</button></td>
+                            <td class="col-2"><button type="button" class="btn btn-warning" onClick={(obj)=>{handleAddToCart(e) ; obj.currentTarget.innerText = "Added"}} >{cartItems.includes(e) ? "Added":"Add To Cart"}</button></td>
                             
                         </tr>
                     );
